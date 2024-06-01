@@ -1,12 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
+import Login from "../components/Login/Login";
+import useLocalStorage from "../shared/hooks/useLocalStorage";
+import Dashboard from "../components/Dashboard/Dashboard";
+import {ContactsProvider} from "../shared/contexts/ContactsProvider/ContactsProvider";
+import {ConversationsProvider} from "../shared/contexts/ConversationProvider/ConversationProvider";
 
 function App() {
-  return (
-    <div className="App">
-      Hi!
-    </div>
-  );
+    const [id, setId] = useLocalStorage('id')
+
+    const dashboard = (
+        <ContactsProvider>
+            <ConversationsProvider id={id}>
+                <Dashboard id={id}/>
+            </ConversationsProvider>
+        </ContactsProvider>
+    )
+    return (
+        <div className="App">
+            {id ? dashboard : <Login onIdSubmit={setId}/>}
+        </div>
+    );
 }
 
 export default App;
