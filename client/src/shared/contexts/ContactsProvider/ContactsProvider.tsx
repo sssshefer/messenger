@@ -2,11 +2,9 @@ import React, {createContext, FC, useContext} from 'react'
 import useLocalStorage from '../../hooks/useLocalStorage'
 import {IContact} from "../../models/IContact";
 
-
 interface IContactsContext {
     contacts: IContact[],
     createContact: (id: string, name: string) => void
-
 }
 
 const ContactsContext = createContext<IContactsContext>({
@@ -22,7 +20,6 @@ export function useContacts() {
 interface ContactsProviderProps {
     children: React.ReactNode
 }
-
 
 export const ContactsProvider: FC<ContactsProviderProps> = ({children}) => {
     const [contacts, setContacts] = useLocalStorage('contacts', [])

@@ -58,7 +58,6 @@ export const ConversationsProvider: FC<ConversationProviderProps> = ({id, childr
                     checkConversationExists(prevConversation.recipientIds, recipientsIds)
                 )
 
-
                 if (conversationExist) {
                     return updateExistingConversation(prevConversations, newMessage, recipientsIds)
                 } else {
@@ -83,7 +82,6 @@ export const ConversationsProvider: FC<ConversationProviderProps> = ({id, childr
 
     function sendMessage(recipientIds: string[], text: string) {
         socket?.emit('send-message', {recipients: recipientIds, text})
-
         addMessageToConversations({recipientsIds: recipientIds, text, senderId: id})
     }
 
@@ -91,14 +89,12 @@ export const ConversationsProvider: FC<ConversationProviderProps> = ({id, childr
         formatConversation(conversation, contacts, id, index, selectedConversationIndex)
     );
 
-
     const value = {
         conversations: formattedConversations,
         createConversation,
         selectedConversation: formattedConversations[selectedConversationIndex],
         sendMessage,
         selectConversationIndex: setSelectedConversationIndex,
-
     }
 
     return (
