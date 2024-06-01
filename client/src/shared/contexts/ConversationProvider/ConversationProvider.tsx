@@ -52,7 +52,7 @@ export const ConversationsProvider: FC<ConversationProviderProps> = ({id, childr
     const addMessageToConversations = useCallback(
         ({recipientsIds, text, senderId}: { recipientsIds: string[], text: string, senderId: string }) => {
             setConversations((prevConversations: IConversation[]) => {
-                const newMessage = {senderId, text}
+                const newMessage = {senderId, text, time: new Date()}
 
                 const conversationExist = prevConversations.some((prevConversation: IConversation) =>
                     checkConversationExists(prevConversation.recipientIds, recipientsIds)

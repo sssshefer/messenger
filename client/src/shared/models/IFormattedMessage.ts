@@ -3,4 +3,5 @@ export interface IFormattedMessage{
     text: string,
     senderName: string,
     fromMe: boolean,
+    time: string
 }

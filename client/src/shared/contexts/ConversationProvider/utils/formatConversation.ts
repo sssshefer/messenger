@@ -33,8 +33,17 @@ const formatMessages = (messages:IMessage[], contacts:IContact[], id:string):IFo
         const contact = contacts.find(contact => contact.id === message.senderId);
         const name = (contact && contact.name) || message.senderId;
         const fromMe = id === message.senderId;
-        return {...message, senderName: name, fromMe};
+        return {...message, senderName: name, fromMe, time: formatDate(message.time)};
     });
 };
 
+const formatDate = (date: Date): string => {
+    const optionsDate: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const optionsTime: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
+
+    const formattedDate = date.toLocaleDateString('en-GB', optionsDate);
+    const formattedTime = date.toLocaleTimeString('en-GB', optionsTime);
+
+    return `${formattedDate} - ${formattedTime}`;
+};
 
