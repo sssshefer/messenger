@@ -1,9 +1,9 @@
-import {IMessage} from "../models/IMessage";
-import {IConversation} from "../models/IConversation";
-import {IContact} from "../../ContactsProvider/models/IContact";
-import {IFormattedRecipient} from "../models/IFormattedRecipient";
-import {IFormattedMessage} from "../models/IFormattedMessage";
-import {IFormattedConversation} from "../models/IFormattedConversation";
+import {IMessage} from "../../../models/IMessage";
+import {IConversation} from "../../../models/IConversation";
+import {IContact} from "../../../models/IContact";
+import {IFormattedRecipient} from "../../../models/IFormattedRecipient";
+import {IFormattedMessage} from "../../../models/IFormattedMessage";
+import {IFormattedConversation} from "../../../models/IFormattedConversation";
 
 interface formatConversationProps {
     (conversation: IConversation,
@@ -21,7 +21,7 @@ export const formatConversation: formatConversationProps = (conversation, contac
 };
 
 const formatRecipients = (recipientIds:string[], contacts:IContact[]):IFormattedRecipient[] => {
-    return recipientIds.map(recipient => {
+    return recipientIds?.map(recipient => {
         const contact = contacts.find(contact => contact.id === recipient);
         const name = (contact && contact.name) || recipient;
         return {id: recipient, name};
@@ -29,7 +29,7 @@ const formatRecipients = (recipientIds:string[], contacts:IContact[]):IFormatted
 };
 
 const formatMessages = (messages:IMessage[], contacts:IContact[], id:string):IFormattedMessage[] => {
-    return messages.map(message => {
+    return messages?.map(message => {
         const contact = contacts.find(contact => contact.id === message.senderId);
         const name = (contact && contact.name) || message.senderId;
         const fromMe = id === message.senderId;

@@ -3,17 +3,18 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import {useContacts} from '../ContactsProvider/ContactsProvider';
 import {useSocket} from '../SocketProvider';
 import {arrayContentEquality} from "../../utils/arrayContentEquality";
-import {IConversation} from "./models/IConversation";
+import {IConversation} from "../../models/IConversation";
 import {formatConversation} from "./utils/formatConversation";
 import {checkConversationExists} from "./utils/checkConversationExists";
 import {updateExistingConversation} from "./utils/updateExistingConversation";
-import {IFormattedConversation} from "./models/IFormattedConversation";
+import {IFormattedConversation} from "../../models/IFormattedConversation";
 
 interface ConversationContextProps {
     conversations: IFormattedConversation[],
     createConversation: (recipientsIds: string[]) => void,
     selectedConversation: IFormattedConversation,
     sendMessage: (recipients: string[], text: string) => void,
+    selectConversationIndex: (index: number) => void
 }
 
 const ConversationsContext = createContext<ConversationContextProps>(
@@ -22,7 +23,8 @@ const ConversationsContext = createContext<ConversationContextProps>(
         createConversation: () => {
         },
         selectedConversation: {recipients: [], messages: [], selected: false},
-        sendMessage: () => {}
+        sendMessage: () => {},
+        selectConversationIndex: () => {}
     })
 
 export function useConversations() {
@@ -52,9 +54,10 @@ export const ConversationsProvider: FC<ConversationProviderProps> = ({id, childr
             setConversations((prevConversations: IConversation[]) => {
                 const newMessage = {senderId, text}
 
-                const conversationExist = prevConversations.some((prevConversation: IConversation) => {
+                const conversationExist = prevConversations.some((prevConversation: IConversation) =>
                     checkConversationExists(prevConversation.recipientIds, recipientsIds)
-                })
+                )
+
 
                 if (conversationExist) {
                     return updateExistingConversation(prevConversations, newMessage, recipientsIds)
@@ -78,10 +81,10 @@ export const ConversationsProvider: FC<ConversationProviderProps> = ({id, childr
         }
     }, [socket, addMessageToConversations])
 
-    function sendMessage(recipients: string[], text: string) {
-        socket?.emit('send-message', {recipients, text})
+    function sendMessage(recipientIds: string[], text: string) {
+        socket?.emit('send-message', {recipients: recipientIds, text})
 
-        addMessageToConversations({recipientsIds: recipients, text, senderId: id})
+        addMessageToConversations({recipientsIds: recipientIds, text, senderId: id})
     }
 
     const formattedConversations = conversations.map((conversation, index) =>
@@ -94,7 +97,7 @@ export const ConversationsProvider: FC<ConversationProviderProps> = ({id, childr
         createConversation,
         selectedConversation: formattedConversations[selectedConversationIndex],
         sendMessage,
-        //selectConversationIndex: setSelectedConversationIndex,
+        selectConversationIndex: setSelectedConversationIndex,
 
     }
 

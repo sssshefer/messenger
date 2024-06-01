@@ -1,6 +1,6 @@
-import {IConversation} from "../models/IConversation";
+import {IConversation} from "../../../models/IConversation";
 import {checkConversationExists} from "./checkConversationExists";
-import {IMessage} from "../models/IMessage";
+import {IMessage} from "../../../models/IMessage";
 
 interface updateExistingConversationProps {
     (prevConversations: IConversation[],

@@ -1,6 +1,6 @@
 import React, {createContext, FC, useContext} from 'react'
 import useLocalStorage from '../../hooks/useLocalStorage'
-import {IContact} from "./models/IContact";
+import {IContact} from "../../models/IContact";
 
 
 interface IContactsContext {

@@ -4,11 +4,11 @@ import {useConversations} from '../../shared/contexts/ConversationProvider/Conve
 
 export default function OpenConversation() {
     const [text, setText] = useState('')
-    // const setRef = useCallback((node) => {
-    //     if (node) {
-    //         node.scrollIntoView({ smooth: true })
-    //     }
-    // }, [])
+    const setRef = useCallback((node:HTMLDivElement|null) => {
+        if (node) {
+            node.scrollIntoView({ behavior:'smooth' })
+        }
+    }, [])
 
     const {sendMessage, selectedConversation} = useConversations()
 
@@ -30,7 +30,7 @@ export default function OpenConversation() {
                         const lastMessage = selectedConversation.messages.length - 1 === index
                         return (
                             <div
-                                //ref={lastMessage ? setRef : null}
+                                ref={lastMessage ? setRef : null}
                                 key={index}
                                 className={`my-1 d-flex flex-column ${message.fromMe ? 'align-self-end align-items-end' : 'align-items-start'}`}
                             >
