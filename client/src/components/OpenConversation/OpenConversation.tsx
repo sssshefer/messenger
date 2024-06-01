@@ -1,6 +1,7 @@
 import React, {useState, useCallback} from 'react'
-import {Form, InputGroup, Button} from 'react-bootstrap'
 import {useConversations} from '../../shared/contexts/ConversationProvider/ConversationProvider'
+import Message from "./Message/Message";
+import ChatInput from "./ChatInput/ChatInput";
 
 export default function OpenConversation() {
     const [text, setText] = useState('')
@@ -14,11 +15,7 @@ export default function OpenConversation() {
 
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
-
-        sendMessage(
-            selectedConversation.recipients.map(r => r.id),
-            text
-        )
+        sendMessage(selectedConversation.recipients.map(r => r.id), text)
         setText('')
     }
 
@@ -29,40 +26,18 @@ export default function OpenConversation() {
                     {selectedConversation.messages.map((message, index) => {
                         const lastMessage = selectedConversation.messages.length - 1 === index
                         return (
-                            <div
-                                ref={lastMessage ? setRef : null}
+                            <Message
+                                message={message}
+                                index={index}
+                                lastMessage={lastMessage}
+                                setRef={setRef}
                                 key={index}
-                                className={`my-1 d-flex flex-column ${message.fromMe ? 'align-self-end align-items-end' : 'align-items-start'}`}
-                            >
-                                <div
-                                    className={`rounded px-2 py-1 ${message.fromMe ? 'bg-primary text-white' : 'border'}`}>
-                                    {message.text}
-                                </div>
-                                <div className={`text-muted small ${message.fromMe ? 'text-right' : ''}`}>
-                                    {message.time}
-                                </div>
-                                <div className={`text-muted small ${message.fromMe ? 'text-right' : ''}`}>
-                                    {message.fromMe ? 'You' : message.senderName}
-                                </div>
-                            </div>
+                            />
                         )
                     })}
                 </div>
             </div>
-            <Form onSubmit={(e) => handleSubmit(e)}>
-                <Form.Group className="m-2">
-                    <InputGroup>
-                        <Form.Control
-                            as="textarea"
-                            required
-                            value={text}
-                            onChange={e => setText(e.target.value)}
-                            style={{height: '75px', resize: 'none'}}
-                        />
-                            <Button type="submit">Send</Button>
-                    </InputGroup>
-                </Form.Group>
-            </Form>
+            <ChatInput text={text} setText={setText} handleSubmit={handleSubmit} />
         </div>
     )
 }
