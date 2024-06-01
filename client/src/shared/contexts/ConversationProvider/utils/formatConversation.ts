@@ -41,8 +41,8 @@ const formatDate = (date: Date): string => {
     const optionsDate: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
     const optionsTime: Intl.DateTimeFormatOptions = { hour: '2-digit', minute: '2-digit', hour12: false };
 
-    const formattedDate = date.toLocaleDateString('en-GB', optionsDate);
-    const formattedTime = date.toLocaleTimeString('en-GB', optionsTime);
+    const formattedDate = new Date(date).toLocaleDateString('en-GB', optionsDate);
+    const formattedTime = new Date(date).toLocaleTimeString('en-GB', optionsTime);
 
     return `${formattedDate} - ${formattedTime}`;
 };
