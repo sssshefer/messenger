@@ -1,12 +1,12 @@
 # <div align="center"><img src="https://github.com/sssshefer/messenger/assets/63253440/5101f7d4-d02b-450f-b590-010484b42f06" alt="chat icon"  height="160"><h1>Messenger</h1></div>
-This application implements the basic functionality of modern messengers. Its purpose is to showcase the usage of WebSockets
+This ***Messanger*** application implements the basic functionality of modern messengers. Its purpose is to showcase the usage of WebSockets
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Technologies](#technologies)
+- [About the project](#about-the-project)
 - [Main Features](#main-features)
-- [User Management](#user-management)
+- [Built With](#built-with)
 - [Setup](#setup)
+- [Contribution](#contribution)
 
 ## About the project
 
@@ -21,23 +21,19 @@ The main focus was to implement the live features of WebSockets, with an emphasi
 - Link your **ID** similar to how you link your phone or Google account in modern messengers
 - Create personal **Contact List**
 - Chat in **real time**
-- Create private group chats (select multiple users for a conversation)
+- Create **private group chats** (select multiple users for a conversation)
 - The sender's name from your contacts and the date when the message was sent are shown in the dialog
 
 ## Built with
- **Frontend:**
+ ### Frontend:
 - [React](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Socket.io](https://socket.io/)
 - [React Bootstrap](https://react-bootstrap.netlify.app/)
     
- **Backend:**
+ ### Backend:
 - [Node.js](https://nodejs.org/)
 - [Socket.io](https://socket.io/)
-
-
-## User Management
-To test the application with two different users, you can open two incognito tabs in your browser. Each tab will have its own instance of the local storage, allowing you to create and manage two separate users with different IDs.
 
 ## Setup
 ### Prerequisites
@@ -47,9 +43,20 @@ To test the application with two different users, you can open two incognito tab
 ### Installation
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/sssshefer/messenger.git
+   cd messenger
    ```
-2. **
-## Contributing
+2. **Go to client folder and start the application:**
+     ```sh
+   cd client
+   npm run start
+   ```
+3. **Go to server folder and start the server:**
+     ```sh
+   cd ../server
+   npm run dev
+   ```
+## Contribution
 Feel free to submit issues or pull requests. For major changes, please open an issue first to discuss what you would like to change.
+
+ *Happy Hacking*
