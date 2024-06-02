@@ -1,5 +1,7 @@
-# <div align="center"><img src="https://github.com/sssshefer/messenger/assets/63253440/5101f7d4-d02b-450f-b590-010484b42f06" alt="chat icon"  height="160"><h1>Messenger</h1></div>
+ <div align="center"><img src="https://github.com/sssshefer/messenger/assets/63253440/ddcb7267-9d44-473b-b110-a1b60b316cd0" alt="chat icon"  height="160">
+ <h1>Messenger</h1></div>
 This ***Messanger*** application implements the basic functionality of modern messengers. Its purpose is to showcase the usage of WebSockets
+![Uploading chat-svgrepo-com.svg…]<?xml version="1.0" encoding="utf-8"?>
 
 ## Table of Contents
 - [About the project](#about-the-project)
