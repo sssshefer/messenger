@@ -1,6 +1,4 @@
-<p align="center"><img src="https://github.com/sssshefer/messenger/assets/63253440/03f23447-e7de-48d0-bbb5-d91e57b52d45" alt=""  height="250"></p>
-
-# Messenger 
+# <div align="center"><img src="https://github.com/sssshefer/messenger/assets/63253440/5101f7d4-d02b-450f-b590-010484b42f06" alt="chat icon"  height="160"><h1>Messenger</h1></div>
 This application implements the basic functionality of modern messengers. Its purpose is to showcase the usage of WebSockets
 
 ## Table of Contents
@@ -55,5 +53,3 @@ To test the application with two different users, you can open two incognito tab
 2. **
 ## Contributing
 Feel free to submit issues or pull requests. For major changes, please open an issue first to discuss what you would like to change.
-
-<a href="https://ru.freepik.com/free-vector/man-woman-chatting-online-people-using-mobile-phones-speech-bubble-distance-flat-vector-illustration-communication-internet_10173148.htm#fromView=search&page=2&position=0&uuid=17686646-04ab-4b32-9265-0cc4367e4bc7">Изображение от pch.vector на Freepik</a>
