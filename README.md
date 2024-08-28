@@ -8,6 +8,8 @@ This ***Messanger*** application implements the basic functionality of modern me
 > In incognito mode, browsers don't retain data like cookies, browsing history, or local storage to maintain user privacy. So, if you save project data to local storage during a regular browsing session, it won't be accessible in incognito mode because the browser doesn't store that information beyond the current session. This way you can create ***different users*** in different tabs <br/><br/>
 > To clear localStorage (if you need to ***reset the created user***), you can either open your browser's Developer Tools, navigate to the Application tab, and clear it from the Local Storage section, or use JavaScript by typing `localStorage.clear()` in the console or in your code. To remove specific items, use `localStorage.removeItem('keyName')`
 
+![Screenshot 2024-08-28 173628](https://github.com/user-attachments/assets/b4ba9b1b-44e5-46c3-aa06-a3436423c5c6)
+
 ## Table of Contents
 - [Main Features](#main-features)
 - [Built With](#built-with)
@@ -47,11 +49,13 @@ This ***Messanger*** application implements the basic functionality of modern me
 2. **Go to client folder and start the application:**
      ```sh
    cd client
+   npm install
    npm run start
    ```
 3. **Go to server folder and start the server:**
      ```sh
    cd ../server
+   npm install
    npm run dev
    ```
 ## Contribution
